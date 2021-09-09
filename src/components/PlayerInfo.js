@@ -6,15 +6,15 @@ const PlayerInfo = ({player}) => {
     return (
         <div>
             <div className="info-box mb-3">
-           <div className="d-flex">
-            <p className={player === 1 ? "activeStyle" : ""}>player1 : </p>
-            <Clear/>
-           </div>
-           <div className="d-flex">
-            <p className={player === 2 ? "activeStyle" : ""}>player2 : </p>
-            <RadioButtonUnchecked/>
-           </div>
-          </div>
+                <div className="d-flex">
+                    <p className={player === 1 ? "activeStyle" : ""}>player1 : </p>
+                    <Clear/>
+                </div>
+                <div className="d-flex">
+                    <p className={player === 2 ? "activeStyle" : ""}>player2 : </p>
+                    <RadioButtonUnchecked/>
+                </div>
+            </div>
         </div>
     )
 }

@@ -14,7 +14,6 @@ const Box = ({OnClick, index, box}) => {
                     :
                 ""
             }
-            
         </div>
     )
 }

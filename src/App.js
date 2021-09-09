@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import Box from './components/Box'
-import EndModal from './components/EndModal'
 import InputPage from './components/InputPage'
 import PlayerInfo from './components/PlayerInfo'
 import ResultGame from './components/ResultGame'
-import WinModal from './components/WinModal'
+import EndModal from './components/modal/EndModal'
+import WinModal from './components/modal/WinModal'
 
 const App = () => {
 
@@ -53,7 +53,6 @@ const App = () => {
        (box[0] === box[4] && box[4] === box[8] && box[0]!==null) ||
        (box[2] === box[4] && box[4] === box[6] && box[2]!==null)
       ){
-        console.log(playerWin[player-1]);
         if((playerWin[player-1]) === (rounds-1)){
           handleEndOpen()
           setTextModal(`The player${player} is the final winner :)))`)
@@ -69,7 +68,7 @@ const App = () => {
                box[6] !== null && box[7] !== null && box[8] !== null){
                handleOpen()
                setTextModal(`game draw :/`)
-             }
+              }   
     }
 
   return (
@@ -77,23 +76,21 @@ const App = () => {
       <div>
         {starting ?
           <div>
-               <ResultGame playerWin={playerWin}/>
-        <div className="game-box d-sm-flex justify-content-sm-between ">
-          <PlayerInfo player={player}/>
-          <div className="playground-box">
-            <div className="row">
-              {box.map((b , index)=>(
-                <Box OnClick={handleClick} index={index} box={b} />
-              ))}
+            <ResultGame playerWin={playerWin}/>
+            <div className="game-box d-sm-flex justify-content-sm-between ">
+              <PlayerInfo player={player}/>
+              <div className="playground-box">
+                <div className="row">
+                  {box.map((b , index)=>(
+                    <Box OnClick={handleClick} index={index} box={b} />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-          </div>
-        :
-        <InputPage setStarting={setStarting} setRounds={setRounds}/>
-        
+          :
+          <InputPage setStarting={setStarting} setRounds={setRounds}/>
         }
-     
         <WinModal
           open={open}
           handleClose={handleClose}
