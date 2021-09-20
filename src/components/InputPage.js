@@ -1,5 +1,5 @@
-import { Tooltip } from '@material-ui/core'
 import React, {useState} from 'react'
+import { Tooltip } from '@material-ui/core'
 
 const InputPage = ({setStarting, setRounds}) => {
 
@@ -7,7 +7,7 @@ const InputPage = ({setStarting, setRounds}) => {
     const [error, setError] = useState("") 
 
     const handleStartGame = () => {
-        if(value.toString().trim() === "" || value <= 0){
+        if(value.toString().trim() === "" || value <= 0 || isNaN(value)){
             setError('Please enter a positive number of game rounds')
         }else{
             setStarting(true)
