@@ -1,27 +1,11 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { Tooltip } from '@material-ui/core';
 import Backdrop from '@material-ui/core/Backdrop';
 import Modal from '@material-ui/core/Modal';
 import Fade from '@material-ui/core/Fade';
 
-const useStyles = makeStyles((theme) => ({
-  modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    borderRadius: '10px',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(5, 5, 3),
-  },
-}));
 
 export default function EndModal({open, handleClose, textModal, setPlayer, setBox, setPlayerWin, setStarting}) {
-
-  const classes = useStyles();
 
   const handleRefresh = () => {
     setPlayer(1)
@@ -36,19 +20,19 @@ export default function EndModal({open, handleClose, textModal, setPlayer, setBo
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        className={classes.modal}
+        className="modal-style"
         open={open}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{timeout: 500}}
         >
         <Fade in={open}>
-          <div className={classes.paper}>
+          <div className="modal-paper">
             <h4 id="transition-modal-title">{textModal}</h4>
             <div className="d-flex justify-content-around mt-4">
               <Tooltip title="OK">
                 <button className="modal-btn"
-                    onClick={handleRefresh}
+                  onClick={handleRefresh}
                 >
                   OK
                 </button>
