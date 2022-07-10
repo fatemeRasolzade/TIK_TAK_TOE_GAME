@@ -5,7 +5,7 @@ import { Clear } from '@material-ui/icons'
 const PlayerInfo = ({player}) => {
     return (
         <div>
-            <div className="info-box mb-3">
+            <div className="info-box mb-3 ml-2 ml-sm-0">
                 <div className="d-flex">
                     <p className={player === 1 && "activeStyle"}>player1 : </p>
                     <Clear/>

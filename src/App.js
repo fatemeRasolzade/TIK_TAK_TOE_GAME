@@ -13,7 +13,7 @@ const App = () => {
   const [rounds, setRounds] = useState()
   const [playerWin, setPlayerWin] = useState([0, 0]);
   const [player, setPlayer] = useState(1);
-  const [box, setBox] = useState([null, null, null, null, null, null, null, null, null]);
+  const [box, setBox] = useState(new Array(9).fill(null));
   const [open, setOpen] = useState(false);
   const [endOpen, setEndOpen] = useState(false)
   const [textModal, setTextModal] = useState("");
