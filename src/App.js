@@ -11,12 +11,13 @@ const App = () => {
 
   const [starting, setStarting] = useState(false)
   const [rounds, setRounds] = useState()
-  const [playerWin, setPlayerWin] = useState([0, 0]);
+  const [playerWin, setPlayerWin] = useState([0, 0])
   const [player, setPlayer] = useState(1);
-  const [box, setBox] = useState(new Array(9).fill(null));
+  const [box, setBox] = useState(new Array(9).fill(null))
   const [open, setOpen] = useState(false);
   const [endOpen, setEndOpen] = useState(false)
-  const [textModal, setTextModal] = useState("");
+  const [textModal, setTextModal] = useState("")
+  const [aiPlayer, setAiPlayer] = useState(true)
 
   const handleOpen = () => {
     setOpen(true);
@@ -37,11 +38,30 @@ const App = () => {
   const handleClick = (index) => {
     if(box[index] === null){
       setPlayer(player===1 ? 2 : 1)
-      const newBox = box
-      newBox[index] = player
-      setBox(newBox)
-      checkWinning()
+      handlePlay(index, aiPlayer ? 1 : player)
+      !aiPlayer && checkWinning()
+      if(!open && !endOpen && aiPlayer){
+        handlePlay(randomIndex(), 2)
+        checkWinning()
+      }
     }
+  }
+
+  const handlePlay = (boxIndex, value) => {
+    const newBox = box
+    newBox[boxIndex] = value
+    setBox(newBox)
+  }
+
+  const randomIndex = () => {
+    let arr = []
+    box.map((b, i) => {
+      if(b===null){
+        arr.push(i)
+      }
+    })
+    let randomIndex = Math.floor(Math.random() * arr.length)
+    return arr[randomIndex]
   }
 
   const checkWinning  = () => {  
@@ -90,7 +110,7 @@ const App = () => {
             </div>
           </div>
           :
-          <InputPage setStarting={setStarting} setRounds={setRounds}/>
+          <InputPage setStarting={setStarting} setRounds={setRounds} aiPlayer={aiPlayer} setAiPlayer={setAiPlayer} />
         }
         <WinModal
           open={open}
