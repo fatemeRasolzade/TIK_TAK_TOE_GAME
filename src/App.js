@@ -5,6 +5,7 @@ import PlayerInfo from './components/PlayerInfo'
 import ResultGame from './components/ResultGame'
 import EndModal from './components/modal/EndModal'
 import WinModal from './components/modal/WinModal'
+import './styles/style.css'
 
 const App = () => {
 

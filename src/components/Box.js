@@ -6,13 +6,8 @@ const Box = ({OnClick, index, box}) => {
     
     return (
         <div className="box qol-4 d-flex flex-column justify-content-center align-items-center" onClick={() => OnClick(index)}>
-            {box ?
-                box===1?
-                    <Clear/>
-                    :
-                    <RadioButtonUnchecked/>
-                    :
-                ""
+            {box &&
+                box===1 ? <Clear/> : <RadioButtonUnchecked/>
             }
         </div>
     )
